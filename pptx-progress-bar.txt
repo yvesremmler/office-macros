@@ -1,0 +1,14 @@
+Sub AddProgressBar()
+    Dim slideIndex As Integer
+    Dim totalSlides As Integer
+    Dim shape As shape
+    totalSlides = ActivePresentation.Slides.Count
+
+    For slideIndex = 1 To totalSlides
+        Set shape = ActivePresentation.Slides(slideIndex).Shapes.AddShape(Type:=msoShapeRectangle, _
+            Left:=0, Top:=ActivePresentation.PageSetup.SlideHeight - 10, Width:=ActivePresentation.PageSetup.SlideWidth * slideIndex / totalSlides, _
+            Height:=10)
+        shape.Fill.ForeColor.RGB = RGB(0, 176, 240) ' Change color here if needed
+        shape.Line.Visible = msoFalse
+    Next slideIndex
+End Sub
